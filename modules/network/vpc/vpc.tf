@@ -1,6 +1,6 @@
 # 1. VPC
 resource "aws_vpc" "main" {
-  cidr_block           =var.vpc_cidr                                    
+  cidr_block = "10.0.0.0/16"                                   
   tags = {
     Name = "main-vpc"                 
   }
@@ -9,8 +9,8 @@ resource "aws_vpc" "main" {
 # 2. Subnet
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = var.sub_cidr[ap-south-1a]
-  availability_zone       = var.az[0]
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "ap-south-1a"
 
   tags = {
     Name = "public-subnet"
