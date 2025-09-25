@@ -50,35 +50,10 @@ resource "aws_route_table_association" "public_assoc" {
 }
 
 
-# Use the first subnet for simplicity
-resource "aws_instance" "example" {
-  ami           = "ami-01b6d88af12965bb6"  
-  instance_type = "t3.micro"
-  subnet_id     = aws_subnet.public_subnet.id 
 
-  tags = {
-    Name = "ExampleInstance"
-  }
-}
 
 output "name"{
 value = aws_instance.example.public_ip
 }
 
 
-# EBS volume creation
-resource "aws_ebs_volume" "eb" {
-  availability_zone = "ap-south-1a"
-  size              = 10
-  tags = {
-    Name = "New-volume"
-  }
-}
-
-#attaching the ebs volume in ap-south-1a
-
-resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdh"
-  volume_id   = aws_ebs_volume.eb.id
-  instance_id = aws_instance.example.id
-}
