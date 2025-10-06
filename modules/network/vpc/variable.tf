@@ -8,7 +8,7 @@ variable "sub_cidr"{
     default = "10.0.1.0/24"
 }
 
-variable "zone "{
+variable "zone"{
     type = string
     default = "ap-south-1a"
 }
