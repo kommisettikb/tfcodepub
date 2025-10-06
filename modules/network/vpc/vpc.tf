@@ -10,7 +10,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.sub_cidr
-  availability_zone       = var.zone
+  availability_zone       = var.d_zone
 
   tags = {
     Name = "public-subnet"
